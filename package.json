@@ -1,0 +1,19 @@
+{
+  "name": "underwearstock",
+  "version": "1.0.0",
+  "description": "App to manage stock",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --forceExit --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArTrok/underwearStock.git"
+  },
+  "author": "ArTrok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArTrok/underwearStock/issues"
+  },
+  "homepage": "https://github.com/ArTrok/underwearStock#readme"
+}
