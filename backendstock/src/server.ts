@@ -2,18 +2,18 @@ import CustomRouter from './routes/Router';
 import App from './app';
 
 import UnderwearController from './controllers/UnderwearController';
-import MotorcycleController from './controllers/MotorcycleController';
+import UserController from './controllers/UserController';
 
-import { Car } from './interfaces/CarInterface';
-import { Motorcycle } from './interfaces/UserInterface';
+import { Underwear } from './interfaces/UnderwearInterface';
+import { User } from './interfaces/UserInterface';
 
 const server = new App();
 
 const carController = new UnderwearController();
-const motorcycleController = new MotorcycleController();
+const motorcycleController = new UserController();
 
-const carRouter = new CustomRouter<Car>();
-const motorcycleRouter = new CustomRouter<Motorcycle>();
+const carRouter = new CustomRouter<Underwear>();
+const motorcycleRouter = new CustomRouter<User>();
 
 carRouter.addRoute(carController);
 motorcycleRouter.addRoute(motorcycleController);

@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import Controller, { RequestWithBody, ResponseError } from '.';
-import MotorcyleService from '../services/UserService';
-import { Motorcycle } from '../interfaces/UserInterface';
+import UserService from '../services/UserService';
+import { User } from '../interfaces/UserInterface';
 
-export default class MotorcycleController extends Controller<Motorcycle> {
+export default class UserController extends Controller<User> {
   private $route: string;
 
   constructor(
-    service = new MotorcyleService(),
-    route = '/motorcycles',
+    service = new UserService(),
+    route = '/users',
   ) {
     super(service);
     this.$route = route;
@@ -17,19 +17,19 @@ export default class MotorcycleController extends Controller<Motorcycle> {
   get route() { return this.$route; }
 
   create = async (
-    req: RequestWithBody<Motorcycle>,
-    res: Response< Motorcycle | ResponseError >,
+    req: RequestWithBody<User>,
+    res: Response< User | ResponseError >,
   ): Promise<typeof res> => {
     const { body } = req;
     try {
-      const motorcycle = await this.service.create(body);
-      if (!motorcycle) {
+      const user = await this.service.create(body);
+      if (!user) {
         return res.status(500).json({ error: this.errors.internal });
       }
-      if ('error' in motorcycle) {
-        return res.status(400).json(motorcycle);
+      if ('error' in user) {
+        return res.status(400).json(user);
       }
-      return res.status(201).json(motorcycle);
+      return res.status(201).json(user);
     } catch (err) {
       return res.status(500).json({ error: this.errors.internal });
     }
@@ -37,16 +37,16 @@ export default class MotorcycleController extends Controller<Motorcycle> {
 
   readOne = async (
     req: Request<{ id: string; }>,
-    res: Response< Motorcycle | ResponseError>,
+    res: Response< User | ResponseError>,
   ): Promise<typeof res> => {
     const { id } = req.params;
     if (id.length < 24) {
       return res.status(400).json({ error: this.extraErrors.minCharacters }); 
     }
     try {
-      const motorcycle = await this.service.readOne(id);
-      return motorcycle
-        ? res.json(motorcycle)
+      const user = await this.service.readOne(id);
+      return user
+        ? res.json(user)
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
@@ -54,8 +54,8 @@ export default class MotorcycleController extends Controller<Motorcycle> {
   };
 
   update = async (
-    req: RequestWithBody<Motorcycle & { id: string }>,
-    res: Response<Motorcycle | ResponseError>,
+    req: RequestWithBody<User & { id: string }>,
+    res: Response<User | ResponseError>,
   ): Promise<typeof res> => {
     const { id } = req.params;
 
@@ -68,10 +68,10 @@ export default class MotorcycleController extends Controller<Motorcycle> {
     }
   
     try {
-      const motorcycle = await this.service.update(id, req.body);
+      const user = await this.service.update(id, req.body);
       
-      return motorcycle
-        ? res.json(motorcycle)
+      return user
+        ? res.json(user)
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
@@ -87,8 +87,8 @@ export default class MotorcycleController extends Controller<Motorcycle> {
       return res.status(400).json({ error: this.extraErrors.minCharacters }); 
     }
     try {
-      const motorcycle = await this.service.delete(id);
-      return motorcycle
+      const user = await this.service.delete(id);
+      return user
         ? res.status(204).json()
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
