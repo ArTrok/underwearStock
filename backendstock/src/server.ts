@@ -1,7 +1,7 @@
 import CustomRouter from './routes/Router';
 import App from './app';
 
-import CarController from './controllers/CarController';
+import UnderwearController from './controllers/UnderwearController';
 import MotorcycleController from './controllers/MotorcycleController';
 
 import { Car } from './interfaces/CarInterface';
@@ -9,7 +9,7 @@ import { Motorcycle } from './interfaces/UserInterface';
 
 const server = new App();
 
-const carController = new CarController();
+const carController = new UnderwearController();
 const motorcycleController = new MotorcycleController();
 
 const carRouter = new CustomRouter<Car>();

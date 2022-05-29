@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import Controller, { RequestWithBody, ResponseError } from '.';
 import UnderwearService from '../services/UnderwearService';
-import { Car } from '../interfaces/CarInterface';
+import { Underwear } from '../interfaces/UnderwearInterface';
 
-export default class CarController extends Controller<Car> {
+export default class UnderwearController extends Controller<Underwear> {
   private $route: string;
 
   constructor(
     service = new UnderwearService(),
-    route = '/cars',
+    route = '/underwears',
   ) {
     super(service);
     this.$route = route;
@@ -17,19 +17,19 @@ export default class CarController extends Controller<Car> {
   get route() { return this.$route; }
 
   create = async (
-    req: RequestWithBody<Car>,
-    res: Response< Car | ResponseError >,
+    req: RequestWithBody<Underwear>,
+    res: Response< Underwear | ResponseError >,
   ): Promise<typeof res> => {
     const { body } = req;
     try {
-      const car = await this.service.create(body);
-      if (!car) {
+      const underwear = await this.service.create(body);
+      if (!underwear) {
         return res.status(500).json({ error: this.errors.internal });
       }
-      if ('error' in car) {
-        return res.status(400).json(car);
+      if ('error' in underwear) {
+        return res.status(400).json(underwear);
       }
-      return res.status(201).json(car);
+      return res.status(201).json(underwear);
     } catch (err) {
       return res.status(500).json({ error: this.errors.internal });
     }
@@ -37,16 +37,16 @@ export default class CarController extends Controller<Car> {
 
   readOne = async (
     req: Request<{ id: string; }>,
-    res: Response< Car | ResponseError>,
+    res: Response< Underwear | ResponseError>,
   ): Promise<typeof res> => {
     const { id } = req.params;
     if (id.length < 24) {
       return res.status(400).json({ error: this.extraErrors.minCharacters }); 
     }
     try {
-      const car = await this.service.readOne(id);
-      return car
-        ? res.json(car)
+      const underwear = await this.service.readOne(id);
+      return underwear
+        ? res.json(underwear)
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
@@ -54,8 +54,8 @@ export default class CarController extends Controller<Car> {
   };
 
   update = async (
-    req: RequestWithBody<Car & { id: string }>,
-    res: Response<Car | ResponseError>,
+    req: RequestWithBody<Underwear & { id: string }>,
+    res: Response<Underwear | ResponseError>,
   ): Promise<typeof res> => {
     const { id } = req.params;
 
@@ -68,10 +68,10 @@ export default class CarController extends Controller<Car> {
     }
   
     try {
-      const car = await this.service.update(id, req.body);
+      const underwear = await this.service.update(id, req.body);
       
-      return car
-        ? res.json(car)
+      return underwear
+        ? res.json(underwear)
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
@@ -87,8 +87,8 @@ export default class CarController extends Controller<Car> {
       return res.status(400).json({ error: this.extraErrors.minCharacters }); 
     }
     try {
-      const car = await this.service.delete(id);
-      return car
+      const underwear = await this.service.delete(id);
+      return underwear
         ? res.status(204).json()
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
