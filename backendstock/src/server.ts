@@ -9,16 +9,16 @@ import { User } from './interfaces/UserInterface';
 
 const server = new App();
 
-const carController = new UnderwearController();
-const motorcycleController = new UserController();
+const underwearController = new UnderwearController();
+const userController = new UserController();
 
-const carRouter = new CustomRouter<Underwear>();
-const motorcycleRouter = new CustomRouter<User>();
+const underwearRouter = new CustomRouter<Underwear>();
+const userRouter = new CustomRouter<User>();
 
-carRouter.addRoute(carController);
-motorcycleRouter.addRoute(motorcycleController);
+underwearRouter.addRoute(underwearController);
+userRouter.addRoute(userController);
 
-server.addRouter(carRouter.router);
-server.addRouter(motorcycleRouter.router);
+server.addRouter(underwearRouter.router);
+server.addRouter(userRouter.router);
 
 export default server;

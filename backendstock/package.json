@@ -4,6 +4,7 @@
   "description": "",
   "main": "./dist",
   "scripts": {
+    "dev": "ts-node-dev src/index.ts",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit"
   },
   "author": "ArTrok",
