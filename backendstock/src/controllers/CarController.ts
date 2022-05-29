@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import Controller, { RequestWithBody, ResponseError } from '.';
-import CarService from '../services/CarService';
+import UnderwearService from '../services/UnderwearService';
 import { Car } from '../interfaces/CarInterface';
 
 export default class CarController extends Controller<Car> {
   private $route: string;
 
   constructor(
-    service = new CarService(),
+    service = new UnderwearService(),
     route = '/cars',
   ) {
     super(service);

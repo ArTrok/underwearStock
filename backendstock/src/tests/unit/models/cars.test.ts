@@ -1,6 +1,6 @@
 import Sinon from "sinon";
 import { Model } from 'mongoose';
-import CarModel, { CarDocument } from "../../../models/CarModel";
+import CarModel, { UnderwearDocument } from "../../../models/UnderwearModel";
 
 const createMock = Sinon.spy();
 const readMock = Sinon.spy();
@@ -14,7 +14,7 @@ const modelMock = {
   findOne: readOneMock,
   findByIdAndUpdate: updateMock,
   findByIdAndDelete: deleteMock,
-} as unknown as Model<CarDocument>;
+} as unknown as Model<UnderwearDocument>;
 
 const validCar = {
   _id: '1j029djiso092wopd1j92d10oij',

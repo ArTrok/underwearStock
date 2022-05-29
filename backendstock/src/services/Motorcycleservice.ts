@@ -1,10 +1,10 @@
 import Service, { ServiceError } from '.';
 import { Motorcycle,
-  MotorcycleSchema } from '../interfaces/MotorcycleInterface';
-import MotorcycleModel from '../models/MotorcycleModel';
+  MotorcycleSchema } from '../interfaces/UserInterface';
+import UserModel from '../models/UserModel';
 
 class MotorcycleService extends Service<Motorcycle> {
-  constructor(model = new MotorcycleModel()) {
+  constructor(model = new UserModel()) {
     super(model);
   }
 

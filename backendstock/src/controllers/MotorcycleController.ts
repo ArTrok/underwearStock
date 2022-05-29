@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Controller, { RequestWithBody, ResponseError } from '.';
 import MotorcyleService from '../services/Motorcycleservice';
-import { Motorcycle } from '../interfaces/MotorcycleInterface';
+import { Motorcycle } from '../interfaces/UserInterface';
 
 export default class MotorcycleController extends Controller<Motorcycle> {
   private $route: string;

@@ -5,7 +5,7 @@ import CarController from './controllers/CarController';
 import MotorcycleController from './controllers/MotorcycleController';
 
 import { Car } from './interfaces/CarInterface';
-import { Motorcycle } from './interfaces/MotorcycleInterface';
+import { Motorcycle } from './interfaces/UserInterface';
 
 const server = new App();
 

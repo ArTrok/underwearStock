@@ -1,6 +1,6 @@
 import Sinon from "sinon";
-import CarService from "../../../services/CarService";
-import CarModel from "../../../models/CarModel";
+import UnderwearService from "../../../services/UnderwearService";
+import CarModel from "../../../models/UnderwearModel";
 
 const createMock = Sinon.spy();
 const readMock = Sinon.spy();
@@ -29,7 +29,7 @@ const validCar = {
 describe('CarService', () => {
   describe('create car', () => {
     it('Calls create function from service', async () => {
-      const carService = new CarService(modelMock);
+      const carService = new UnderwearService(modelMock);
 
       await carService.create(validCar);
 
@@ -39,7 +39,7 @@ describe('CarService', () => {
 
   describe('read car', () => {
     it('Calls read function from service', async () => {
-      const carService = new CarService(modelMock);
+      const carService = new UnderwearService(modelMock);
 
       await carService.read();
 
@@ -49,7 +49,7 @@ describe('CarService', () => {
 
   describe('readOne car', () => {
     it('Calls readOne function from service', async () => {
-      const carService = new CarService(modelMock);
+      const carService = new UnderwearService(modelMock);
 
       await carService.readOne(validCar._id);
 
@@ -59,7 +59,7 @@ describe('CarService', () => {
 
   describe('update car', () => {
     it('Calls update function from service', async () => {
-      const carService = new CarService(modelMock);
+      const carService = new UnderwearService(modelMock);
 
       await carService.update(validCar._id, validCar);
 
@@ -69,7 +69,7 @@ describe('CarService', () => {
 
   describe('delete car', () => {
     it('Calls delete function from service', async () => {
-      const carService = new CarService(modelMock);
+      const carService = new UnderwearService(modelMock);
 
       await carService.delete(validCar._id);
 

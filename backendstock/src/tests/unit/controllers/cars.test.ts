@@ -3,7 +3,7 @@ import chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import server from '../../../server';
-import CarService from "../../../services/CarService";
+import UnderwearService from "../../../services/UnderwearService";
 
 chai.use(chaiHttp);
 
@@ -30,7 +30,7 @@ const validCarRes = {
 
 describe('CarController', () => {
   describe('Create car', async () => {
-    const carService = new CarService();
+    const carService = new UnderwearService();
     before(async () => {
       Sinon
       .stub(carService, 'create')
@@ -54,7 +54,7 @@ describe('CarController', () => {
   });
 
   describe('Read cars', async () => {
-    const carService = new CarService();
+    const carService = new UnderwearService();
     before(async () => {
       Sinon
       .stub(carService, 'read')
@@ -78,7 +78,7 @@ describe('CarController', () => {
   });
 
   describe('ReadOne car', async () => {
-    const carService = new CarService();
+    const carService = new UnderwearService();
     before(async () => {
       Sinon
       .stub(carService, 'readOne')
@@ -107,7 +107,7 @@ describe('CarController', () => {
   });
 
   describe('Update car', async () => {
-    const carService = new CarService();
+    const carService = new UnderwearService();
     before(async () => {
       Sinon
       .stub(carService, 'update')
@@ -144,7 +144,7 @@ describe('CarController', () => {
   });
 
   describe('Delete car', async () => {
-    const carService = new CarService();
+    const carService = new UnderwearService();
     before(async () => {
       Sinon
       .stub(carService, 'delete')
