@@ -1,22 +1,22 @@
 import Service, { ServiceError } from '.';
-import { Motorcycle,
-  MotorcycleSchema } from '../interfaces/UserInterface';
+import { User,
+  UserSchema } from '../interfaces/UserInterface';
 import UserModel from '../models/UserModel';
 
-class MotorcycleService extends Service<Motorcycle> {
+class UserService extends Service<User> {
   constructor(model = new UserModel()) {
     super(model);
   }
 
   create = async (
-    motorcycleObj: Motorcycle,
-  ): Promise< Motorcycle | ServiceError | null > => {
-    const parse = MotorcycleSchema.safeParse(motorcycleObj);
+    userObj: User,
+  ): Promise< User | ServiceError | null > => {
+    const parse = UserSchema.safeParse(userObj);
     if (!parse.success) {
       return { error: parse.error };
     }
-    return this.model.create(motorcycleObj);
+    return this.model.create(userObj);
   };
 }
 
-export default MotorcycleService;
+export default UserService;
